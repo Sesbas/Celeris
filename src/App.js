@@ -6,8 +6,11 @@ import Layout from './components/layout/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
+import Roles from './pages/Roles';
 import Customers from './pages/Customers';
 import Products from './pages/Products';
+import Assets from './pages/Assets';
+import ServiceOrders from './pages/ServiceOrders';
 import './App.css';
 
 function App() {
@@ -42,6 +45,18 @@ function App() {
             }
           />
 
+          {/* Roles - Solo Manager (RoleID = 1) */}
+          <Route
+            path="/roles"
+            element={
+              <ProtectedRoute requiredRole={1}>
+                <Layout>
+                  <Roles />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
           {/* Clientes - Accesible para todos los roles */}
           <Route
             path="/customers"
@@ -61,6 +76,30 @@ function App() {
               <ProtectedRoute>
                 <Layout>
                   <Products />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Assets (Equipos) - Accesible para todos los roles */}
+          <Route
+            path="/assets"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Assets />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Órdenes de Servicio - Accesible para todos los roles */}
+          <Route
+            path="/service-orders"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <ServiceOrders />
                 </Layout>
               </ProtectedRoute>
             }

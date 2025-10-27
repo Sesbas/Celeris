@@ -1,0 +1,108 @@
+.assets-page {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* Selector de cliente */
+.customer-select {
+  max-width: 300px;
+  padding: 8px 12px;
+}
+
+/* Asset ID */
+.asset-id {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  background: #f0f4ff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Serial */
+.asset-serial {
+  display: flex;
+  align-items: center;
+}
+
+.serial-badge {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  background: #f5f5f5;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid #e0e0e0;
+}
+
+/* Cliente en tabla */
+.customer-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customer-avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Producto */
+.product-name {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Instalador */
+.installer-name {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Financiamiento */
+.financing-status {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}
+
+.assets-count {
+  font-size: 14px;
+  color: #666;
+}
+
+.assets-count strong {
+  color: #333;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .customer-select {
+    max-width: 100%;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-container {
+    overflow-x: scroll;
+  }
+
+  .table {
+    min-width: 1400px;
+  }
+}
