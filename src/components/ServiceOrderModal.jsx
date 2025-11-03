@@ -10,9 +10,9 @@ const ServiceOrderModal = ({ order, customers, assets, users, onClose, onSave })
     Status: 'requested',
     ScheduledAt: '',
     CompletedAt: '',
+    Notes: '',
     Amount: '',
-    PaymentStatus: 'pending',
-    Notes: ''
+    PaymentStatus: 'pending'
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -28,9 +28,9 @@ const ServiceOrderModal = ({ order, customers, assets, users, onClose, onSave })
         Status: order.Status || 'requested',
         ScheduledAt: order.ScheduledAt ? order.ScheduledAt.substring(0, 16) : '',
         CompletedAt: order.CompletedAt ? order.CompletedAt.substring(0, 16) : '',
+        Notes: order.Notes || '',
         Amount: order.Amount || '',
-        PaymentStatus: order.PaymentStatus || 'pending',
-        Notes: order.Notes || ''
+        PaymentStatus: order.PaymentStatus || 'pending'
       });
       
       // Filtrar assets del cliente
@@ -108,7 +108,7 @@ const ServiceOrderModal = ({ order, customers, assets, users, onClose, onSave })
   };
 
   // Filtrar solo técnicos
-  const technicians = users.filter(u => u.RoleID === 2 || u.RoleID === 1);
+  const technicians = users.filter(u => u.RoleID === 3);
 
   return (
     <div className="modal-overlay" onClick={onClose}>

@@ -33,7 +33,7 @@ function App() {
             }
           />
 
-          {/* Usuarios - Solo Manager (RoleID = 1) */}
+          {/* Usuarios - Solo admin (RoleID = 1) */}
           <Route
             path="/users"
             element={
@@ -45,7 +45,7 @@ function App() {
             }
           />
 
-          {/* Roles - Solo Manager (RoleID = 1) */}
+          {/* Roles - Solo admin (RoleID = 1) */}
           <Route
             path="/roles"
             element={

@@ -108,9 +108,6 @@ const Roles = () => {
               
               <div className="role-body">
                 <h3 className="role-name">{role.Name}</h3>
-                <p className="role-description">
-                  {getRoleDescription(role.Name)}
-                </p>
               </div>
 
               <div className="role-footer">
@@ -165,16 +162,6 @@ const getRoleBadgeClass = (roleId) => {
   return classes[roleId] || 'secondary';
 };
 
-const getRoleDescription = (roleName) => {
-  const descriptions = {
-    'Manager': 'Acceso completo al sistema. Gestiona usuarios, clientes, productos y todas las operaciones.',
-    'Technician': 'Realiza instalaciones, mantenimientos y servicios técnicos. Gestiona órdenes de servicio.',
-    'Sales': 'Gestiona clientes potenciales y activos. Genera cotizaciones y ventas.',
-    'Admin': 'Administrador del sistema con permisos completos.',
-    'Vendedor': 'Encargado de ventas y atención al cliente.',
-    'Técnico': 'Responsable de servicios técnicos y mantenimientos.',
-  };
-  return descriptions[roleName] || 'Rol personalizado del sistema';
-};
+
 
 export default Roles;
