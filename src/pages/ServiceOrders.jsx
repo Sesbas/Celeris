@@ -16,7 +16,7 @@ const ServiceOrders = () => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingOrder, setEditingOrder] = useState(null);
-  
+
   // Filtros
   const [statusFilter, setStatusFilter] = useState('all');
   const [customerFilter, setCustomerFilter] = useState('all');
@@ -35,7 +35,7 @@ const ServiceOrders = () => {
         assetService.getAll(),
         userService.getAll()
       ]);
-      
+
       setOrders(ordersRes.records || []);
       setCustomers(customersRes.records || []);
       setAssets(assetsRes.records || []);
@@ -50,7 +50,7 @@ const ServiceOrders = () => {
 
   const handleStatusFilter = async (status) => {
     setStatusFilter(status);
-    
+
     if (status === 'all') {
       loadData();
       return;
@@ -69,7 +69,7 @@ const ServiceOrders = () => {
 
   const handleCustomerFilter = async (customerId) => {
     setCustomerFilter(customerId);
-    
+
     if (customerId === 'all') {
       loadData();
       return;
@@ -143,10 +143,10 @@ const ServiceOrders = () => {
 
   // Filtrar localmente
   const filteredOrders = orders.filter(order => {
-    const matchesSearch = searchTerm === '' || 
+    const matchesSearch = searchTerm === '' ||
       order.CustomerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.TechnicianName?.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     return matchesSearch;
   });
 
@@ -182,8 +182,8 @@ const ServiceOrders = () => {
             className="search-input"
           />
           {searchTerm && (
-            <button 
-              className="btn-clear" 
+            <button
+              className="btn-clear"
               onClick={() => setSearchTerm('')}
               title="Limpiar búsqueda"
             >
@@ -289,10 +289,10 @@ const ServiceOrders = () => {
               ) : (
                 filteredOrders.map((order) => (
                   <tr key={order.ServiceID}>
-                    <td>
+                    <td data-label="ID">
                       <span className="order-id">{order.ServiceID}</span>
                     </td>
-                    <td>
+                    <td data-label="Cliente">
                       <div className="customer-info">
                         <div className="customer-avatar-small">
                           {order.CustomerName?.charAt(0)}
@@ -300,37 +300,41 @@ const ServiceOrders = () => {
                         {order.CustomerName}
                       </div>
                     </td>
-                    <td>
+                    <td data-label="Equipo">
                       <span className="asset-info">
                         {order.AssetSerial || '-'}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Tipo Servicio">
                       <span className={`badge badge-${getServiceTypeBadgeClass(order.ServiceType)}`}>
                         {getServiceTypeLabel(order.ServiceType)}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Técnico">
                       <span className="technician-name">
                         {order.TechnicianName || 'Sin asignar'}
                       </span>
                     </td>
-                    <td>{formatDateTime(order.RequestedAt)}</td>
-                    <td>{formatDateTime(order.ScheduledAt)}</td>
-                    <td>
+                    <td data-label="Solicitado">
+                      {formatDateTime(order.RequestedAt)}
+                    </td>
+                    <td data-label="Programado">
+                      {formatDateTime(order.ScheduledAt)}
+                    </td>
+                    <td data-label="Estado">
                       <span className={`badge badge-${getStatusBadgeClass(order.Status)}`}>
                         {getStatusLabel(order.Status)}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Monto">
                       {order.Amount ? `$${parseFloat(order.Amount).toLocaleString()}` : '-'}
                     </td>
-                    <td>
+                    <td data-label="Pago">
                       <span className={`badge badge-${getPaymentBadgeClass(order.PaymentStatus)}`}>
                         {getPaymentLabel(order.PaymentStatus)}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Acciones">
                       <div className="action-buttons">
                         {order.Status !== 'completed' && order.Status !== 'canceled' && (
                           <button

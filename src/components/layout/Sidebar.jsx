@@ -3,22 +3,23 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './Sidebar.css';
 
+
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
   const { user } = useAuth();
 
   const menuItems = [
     { path: '/dashboard', label: 'Dashboard', icon: '📊', roles: [1, 2, 3] },
-    { path: '/users', label: 'Usuarios', icon: '👤', roles: [1] }, // Solo Manager
-    { path: '/customers', label: 'Clientes', icon: '👥', roles: [1, 2, 3] },
+    { path: '/users', label: 'Usuarios', icon: '👤', roles: [1] }, // Solo Admin
+    { path: '/customers', label: 'Clientes', icon: '👥', roles: [1, 2] },
     { path: '/assets', label: 'Equipos', icon: '💧', roles: [1, 2, 3] },
-    { path: '/service-orders', label: 'Órdenes de Servicio', icon: '🔧', roles: [1, 2] },
+    { path: '/service-orders', label: 'Órdenes de Servicio', icon: '🔧', roles: [1, 2, 3] },
     { path: '/products', label: 'Productos', icon: '📦', roles: [1, 2, 3] },
-    { path: '/roles', label: 'Roles', icon: '🔐', roles: [1] }, // Solo Manager
+    { path: '/roles', label: 'Roles', icon: '🔐', roles: [1] }, // Solo Admin
   ];
 
   // Filtrar items según el rol del usuario
-  const filteredItems = menuItems.filter(item => 
+  const filteredItems = menuItems.filter(item =>
     item.roles.includes(user?.RoleID)
   );
 
@@ -32,11 +33,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       {/* Sidebar */}
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <h2>AWA CRM</h2>
-          <button className="close-btn" onClick={toggleSidebar}>
-            ✕
-          </button>
+          <img src="/AWA.jpg" alt="AWA Logo" className="sidebar-logo" />
+          <button className="close-btn" onClick={toggleSidebar}>✕</button>
         </div>
+
 
         <nav className="sidebar-nav">
           {filteredItems.map((item) => (

@@ -1,15 +1,15 @@
 .assets-page {
   max-width: 1800px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
-/* Selector de cliente */
 .customer-select {
   max-width: 300px;
   padding: 8px 12px;
+  width: 100%;
 }
 
-/* Asset ID */
 .asset-id {
   font-family: monospace;
   font-size: 14px;
@@ -18,9 +18,9 @@
   background: #f0f4ff;
   padding: 4px 8px;
   border-radius: 4px;
+  display: inline-block;
 }
 
-/* Serial */
 .asset-serial {
   display: flex;
   align-items: center;
@@ -37,7 +37,6 @@
   border: 2px solid #e0e0e0;
 }
 
-/* Cliente en tabla */
 .customer-info {
   display: flex;
   align-items: center;
@@ -58,19 +57,16 @@
   flex-shrink: 0;
 }
 
-/* Producto */
 .product-name {
   font-weight: 500;
   color: #333;
 }
 
-/* Instalador */
 .installer-name {
   font-size: 13px;
   color: #666;
 }
 
-/* Financiamiento */
 .financing-status {
   font-size: 13px;
   color: #666;
@@ -87,22 +83,83 @@
   font-size: 16px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
+  .assets-page {
+    padding: 0 8px;
+  }
+
+  .assets-page .page-header {
+    flex-direction: column !important;
+    gap: 12px;
+  }
+
+  .assets-page .page-header h1 {
+    font-size: 22px !important;
+  }
+
   .customer-select {
     max-width: 100%;
   }
 
-  .filter-group {
-    flex-direction: column;
-    align-items: flex-start;
+  .assets-page .filter-group {
+    flex-direction: column !important;
+    gap: 12px;
   }
 
-  .table-container {
-    overflow-x: scroll;
+  /* Convertir tabla en cards */
+  .assets-page .table-container {
+    width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
-  .table {
-    min-width: 1400px;
+  .assets-page .table {
+     width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  }
+
+  .assets-page .table thead {
+    padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  }
+
+  .assets-page .table tbody {
+    padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  }
+
+  .assets-page .table tr {
+    display: block !important;
+    background: white;
+    border-radius: 12px;
+    padding: 16px !important;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+  }
+
+  .assets-page .table td {
+    display: block !important;
+    text-align: left !important;
+    padding: 8px 0 !important;
+    border: none !important;
+  }
+
+  .assets-page .table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
   }
 }
+
