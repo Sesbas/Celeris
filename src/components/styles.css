@@ -1,3 +1,6 @@
+/* ===========================
+   Modal Base
+=========================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -14,12 +17,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .modal-content {
@@ -34,16 +33,13 @@
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
+/* ===========================
+   Modal Header
+=========================== */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -74,6 +70,9 @@
   color: #333;
 }
 
+/* ===========================
+   Modal Body & Form
+=========================== */
 .modal-form {
   padding: 24px;
 }
@@ -107,6 +106,9 @@
   margin-top: 4px;
 }
 
+/* ===========================
+   Modal Footer
+=========================== */
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -116,7 +118,9 @@
   border-top: 1px solid #e0e0e0;
 }
 
-/* Info Box */
+/* ===========================
+   Info Box
+=========================== */
 .info-box {
   background: #f0f4ff;
   border: 1px solid #d0ddff;
@@ -142,7 +146,77 @@
   margin-bottom: 4px;
 }
 
-/* Responsive */
+/* ===========================
+   Modal Grande
+=========================== */
+.modal-large {
+  max-width: 800px;
+}
+
+.form-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.help-text {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+  margin-top: 4px;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 900px) {
+  .modal-large {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .modal-content {
     max-width: 100%;
@@ -162,22 +236,4 @@
   .modal-footer button {
     width: 100%;
   }
-}
-
-/* Scrollbar */
-.modal-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }

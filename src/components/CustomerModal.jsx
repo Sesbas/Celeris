@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './CustomerModal.css';
+import './styles.css';
 
 const CustomerModal = ({ customer, currentUser, onClose, onSave }) => {
   const [formData, setFormData] = useState({

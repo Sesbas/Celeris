@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import customerService from '../services/customerService';
 import CustomerModal from '../components/CustomerModal';
@@ -10,7 +11,8 @@ const Customers = () => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);
-  
+  const navigate = useNavigate();
+
   // Filtros
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -51,7 +53,7 @@ const Customers = () => {
 
   const handleStatusFilter = async (status) => {
     setStatusFilter(status);
-    
+
     if (status === 'all') {
       loadCustomers();
       return;
@@ -146,8 +148,8 @@ const Customers = () => {
             Buscar
           </button>
           {searchTerm && (
-            <button 
-              className="btn-clear" 
+            <button
+              className="btn-clear"
               onClick={() => {
                 setSearchTerm('');
                 loadCustomers();
@@ -221,8 +223,8 @@ const Customers = () => {
               {customers.length === 0 ? (
                 <tr>
                   <td colSpan="9" style={{ textAlign: 'center', padding: '40px' }}>
-                    {searchTerm || statusFilter !== 'all' 
-                      ? 'No se encontraron clientes con los filtros aplicados' 
+                    {searchTerm || statusFilter !== 'all'
+                      ? 'No se encontraron clientes con los filtros aplicados'
                       : 'No hay clientes registrados'}
                   </td>
                 </tr>
@@ -251,8 +253,8 @@ const Customers = () => {
                     <td>{customer.Email || '-'}</td>
                     <td>{customer.Phone || '-'}</td>
                     <td>
-                      {customer.CityName 
-                        ? `${customer.CityName}, ${customer.StateCode || ''}` 
+                      {customer.CityName
+                        ? `${customer.CityName}, ${customer.StateCode || ''}`
                         : '-'}
                     </td>
                     <td>
@@ -268,6 +270,13 @@ const Customers = () => {
                     <td>{formatDate(customer.created_at)}</td>
                     <td>
                       <div className="action-buttons">
+                        <button
+                          className="btn-icon btn-view"
+                          onClick={() => navigate(`/customers/${customer.CustomerID}`)}
+                          title="Ver Detalle"
+                        >
+                          👁️
+                        </button>
                         <button
                           className="btn-icon btn-edit"
                           onClick={() => handleEditCustomer(customer)}

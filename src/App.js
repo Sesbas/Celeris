@@ -11,6 +11,7 @@ import Customers from './pages/Customers';
 import Products from './pages/Products';
 import Assets from './pages/Assets';
 import ServiceOrders from './pages/ServiceOrders';
+import CustomerDetail from './pages/CustomerDetail';
 import './App.css';
 
 function App() {
@@ -69,6 +70,18 @@ function App() {
             }
           />
 
+          {/* Vista Detallada de Cliente */}
+          <Route
+            path="/customers/:customerId"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CustomerDetail />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
           {/* Productos - Accesible para todos los roles */}
           <Route
             path="/products"
@@ -109,13 +122,13 @@ function App() {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
           {/* Ruta 404 - Página no encontrada */}
-          <Route 
-            path="*" 
+          <Route
+            path="*"
             element={
-              <div style={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 height: '100vh',
                 flexDirection: 'column',
                 gap: '20px'
@@ -123,7 +136,7 @@ function App() {
                 <h1>404 - Página no encontrada</h1>
                 <a href="/dashboard" style={{ color: '#667eea' }}>Volver al Dashboard</a>
               </div>
-            } 
+            }
           />
         </Routes>
       </Router>

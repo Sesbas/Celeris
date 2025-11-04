@@ -176,3 +176,12 @@
     min-width: 1200px;
   }
 }
+.btn-icon.btn-view {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.btn-icon.btn-view:hover {
+  background: #0284c7;
+  color: white;
+}
